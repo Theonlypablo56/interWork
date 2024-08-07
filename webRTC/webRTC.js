@@ -849,11 +849,6 @@ roomInput.onchange = () => {
   }
 }
 
-passwordInput.onchange = () => {
-  if (passwordInput.value){
-    eval(`console.log(${passwordInput.value});`); // DO NOT LEAVE IN AT FUCKING ALL ! ! ! 
-  }
-}
 
 cameraDropdown.onchange = async () => {
   if (!localStream){
