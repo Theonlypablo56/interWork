@@ -1,0 +1,648 @@
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+body {
+  background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-top: 0px;
+  margin-left: 0px;
+  position: relative;
+  scrollbar-width: none;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+  color: #a0a5aa;
+  animation-composition: replace;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: 'Segoe UI';
+  font-weight: 600;
+  scroll-behavior: smooth;
+}
+h5{
+  margin-block: 0px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.x-anchor-menu-item .x-image img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+
+
+.peerVideos {
+  margin: 2vh 0vh 2vh 0vh;
+  width: 95%;
+  max-width: 95%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  z-index: 5;
+  overflow: scroll;
+  position: relative;
+}
+
+.SidePlayer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-width: 10%;
+  width: 30%;
+  z-index: 5;
+}
+
+.camFeed {
+  border: solid #1f262e 3px;
+  border-radius: 2px;
+  aspect-ratio: 16/9;
+  background-color: #35414f;
+  z-index: 5 !important;
+}
+
+.hostBtns{
+  position: relative;
+  display: flex;
+  width: 50%;
+  height: 100%;
+  flex-direction: row;
+  justify-self: center;
+  justify-content: space-evenly !important;
+  align-items: center !important;
+}
+
+.streamBtn{
+  width: 6vw;
+  aspect-ratio: 3/1;
+  position: relative;
+  z-index: 4;
+  background-color: #292e36;
+  border: #191b20 solid 1px;
+  border-radius: 3px;
+  padding: 0px 0px 0px 0px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.buttonText{
+  color: #e8eaed;
+  font-size: 9px;
+  display: block;
+  font-weight: 700;
+  margin: 0px 0px 0px 0px;
+  z-index: 5;
+}
+#leaveRoomBtn{
+  background-color: #830000;
+}
+.settingsBtn{
+  position: absolute;
+  width: 4vw;
+  height: 2vw;
+  z-index: 4;
+  background-color: #292e36;
+  border: #191b20 solid 1px;
+  border-radius: 3px;
+  margin-right: 80%;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+
+.videoLinkInput {
+  max-height: 3vh;
+  width: 55%;
+  margin: 1% 0% 0% 0.5em;
+  padding: 0px 0.2em 0px 0.2em;
+  border-width: 0px 0px 3px 0px !important;
+  border-bottom: solid #1f262e;
+  border-radius: 3px;
+  align-self: center;
+  z-index: 4 !important;
+}
+.inputCheck{
+  max-width: 100%;
+  position: absolute;
+  visibility: hidden;
+}
+
+input[type="text"], textarea {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  font-family: inherit;
+  font-weight: 400;
+}
+
+textarea,
+select,
+input,
+button {
+  outline: none;
+}
+
+.streamSettings{
+  display: flex;
+  width: 100%;
+  height: 40vh;
+  align-self: flex-start;
+  overflow: hidden;
+}
+.userInfo{
+  width: 95%;
+  align-self: flex-start;
+  margin: 2% 0% 4% 0%;
+}
+
+.streamSettings_DEP{
+  display: flex;
+  border: #1f262e solid 3px;
+  align-self: flex-start;
+  margin-left: 2.5%;
+  width: 45%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.settInputs{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 1.5% 0% 0% 1.5%;
+}
+.inputLabel{
+  text-wrap: nowrap;
+  font-weight: 600;
+}
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.separatingLine{
+  min-width: 92.5%;
+  font-size: 0px;
+  border-bottom: solid 3px #13151b;
+  border-radius: 2px;
+}
+
+
+.availablePeers{
+  width: 90%;
+  align-self: flex-start;
+  align-items: flex-start;
+  margin: 1% 0% 0% 5%;
+  justify-content: flex-start;
+  /* min-height: 25%;  40vh */
+}
+.peerList{
+  max-height: 20vh;
+  width: 100%;
+  margin: .25em 0em 0em .5em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.peerItem{
+  text-indent: .5em;
+  width: 15em;
+  margin-block: 0px;
+  margin-top: 1%;
+  font-size: .8em;
+  font-weight: 600;
+  color: #b0c3ff;
+  border-bottom: #13151b solid 2px;
+}
+.hostOverlay{
+  opacity: 0%;
+  transition: opacity .25s ease-in-out;
+}
+.peerCamOverlay{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-end;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  aspect-ratio: 16/9;
+  z-index: 15;
+}
+.overlayBtmLeftInfo{
+  display: flex;
+  width: fit-content;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.25em 3% 0% 3%;
+  opacity: 100%;
+  border-radius: 0px 5px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.micIcon {
+  aspect-ratio: 1/1;
+  width: 100%;
+  fill-opacity: 100%;
+}
+.peerTextOverlay {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  text-wrap: nowrap;
+  text-align: center;
+  padding: 0em 1em 0em 1em;
+}
+
+.mainBottomControls {
+  position: fixed;
+  height: 6vh;
+  width: 100vw;
+  bottom: 0px;
+  z-index: 20;
+  background-color: #161b22;
+  align-items: center;
+}
+
+.deviceSettings {
+  width: 100%;
+  height: fit-content;
+}
+
+.settingDropdownContainer {
+  width: 100%;
+  aspect-ratio: 10/1;
+  justify-content: space-between;
+  margin-left: 1em;
+  align-items: end;
+}
+.settingDropdown {
+  width: 40%;
+  outline: none;
+  color: #a0a5aa;
+  margin-right: 1em;
+  background-color: #13151b00;
+  padding: 0;
+  border: none;
+  border-bottom: #191b20 solid 3px;
+  border-radius: 2px;
+}
+
+.unExist {
+  display: none;
+}
+/* ------------------------------------------------------------------ */
+
+.editableRow {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.MainTopBar {
+  height: 8.3vh;
+  width: 97vw;
+  padding-left: 1vw;
+  padding-right: 2vw;
+  z-index: 12;
+  background-color: #161b22;
+  margin-bottom: 3vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sideBarAndPlayers {
+  position: relative;
+  max-height: 83vh;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+.sideBar {
+  display: flex;
+  position: absolute;
+  flex-shrink: 0;
+  background-color: #242c38;
+  margin-top: -3vh;
+  z-index: 10;
+  border-right: solid 2px #33394a;
+  height: 94vh;
+  width: 20vw;
+  max-width: 20vw;
+  border-radius: 2px;
+  box-shadow: 4px 2px 7px 0px rgba(36, 44, 56, 0.7);
+}
+.bottomSettingsBar {
+  display: flex;
+  height: 86vh;
+  width: 20vw;
+  max-width: 20vw;
+  position: absolute;
+  flex-shrink: 0;
+  background-color: #242c38;
+  margin-right: 80vw;
+  margin-bottom: 91.7vh;
+  z-index: 0;
+  border-right: solid 2px #33394a;
+  border-radius: 2px;
+  box-shadow: 4px 2px 7px 0px rgba(36, 44, 56, 0.7);
+}
+
+.sideTopBar {
+  width: 90%;
+  height: 35px;
+  margin-top: 5%;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.sideBarText {
+  margin-top: 0%;
+  margin-bottom: 0%;
+  text-align: center;
+  font-size: 100%;
+  color: #f3ecec;
+  font-weight: 800;
+  cursor: default;
+}
+
+button.sideOpenBtn {
+  height: 30px;
+  width: 25px;
+  background-color: #292e36;
+  outline: solid 1px #191b20;
+  border-width: 0px;
+  border-radius: 3px;
+  padding: 0px 0px 0px 0px;
+  flex-shrink: 0;
+  fill: #cfd3d7;
+  cursor: pointer;
+}
+
+button.sideCloseBtn {
+  height: 25px;
+  width: 25px;
+  background-color: #292e36;
+  border: #191b20 solid 1px;
+  border-radius: 3px;
+  padding: 0px 0px 0px 0px;
+  flex-shrink: 0;
+  fill: #cfd3d7;
+  cursor: pointer;
+}
+
+.allThePlayers {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.startClosed {
+  height: 0vh;
+  transform: translate(0%, 43vh);
+  overflow: hidden;
+}
+
+.clickOverlay{
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 16/9;
+  z-index: 15 !important;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* ANIMATION AND INTERACTION STUFF BELOW */
+/* @keyframes duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+/* @keyframes duration | easing-function | delay | name */
+@keyframes simpleShake {
+  0% {
+    position: relative;
+  }
+
+  25% {
+    transform: translate(-5%, 0%);
+  }
+
+  50% {
+    transform: translate(5%, 0%);
+  }
+
+  75% {
+    transform: translate(-5%, 0%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes inputDrop {
+  0% {
+    transform: translate(0%, -250%);
+    visibility: hidden;
+    position: relative;
+    max-height: 0vh;
+    margin-top: 0px;
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    visibility: visible;
+    position: relative;
+    opacity: 1;
+    /*  ehhh   */
+  }
+}
+
+@keyframes inputDrop_reversed {
+  0% {
+    transform: translate(0%, 0%);
+    visibility: visible;
+    position: relative;
+  }
+
+  100% {
+    transform: translate(0%, -250%);
+    visibility: hidden;
+    position: relative;
+    max-height: 0vh;
+    margin-top: 0px;
+    opacity: 0;
+    /*  ehhh   */
+  }
+}
+
+@keyframes smoothCloseBtn {
+  0% {
+    fill: #cfd3d7;
+  }
+
+  100% {
+    fill: #FFFFFF;
+  }
+}
+
+@keyframes sideBarClosing_DEP {
+  0% {
+    transform: translate(0%, 0%);
+    width: 20vw;
+    overflow: hidden;
+  }
+
+  100% {
+    transform: translate(-150%, 0%);
+    width: 0vw;
+    overflow: hidden;
+  }
+}
+
+@keyframes sideBarOpening_DEP {
+  0% {
+    transform: translate(-150%, 0%);
+    width: 0vw;
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    width: 20vw;
+  }
+}
+
+@keyframes sideBarClosing {
+  0% {
+    transform: translate(0%, 0vh);
+    height: 86vh;
+    overflow: hidden;
+  }
+
+  100% {
+    transform: translate(0%, 43vh);
+    height: 0vh;
+    overflow: hidden;
+  }
+}
+
+@keyframes sideBarOpening {
+  0% {
+    transform: translate(0%, 43vh);
+    height: 0vh;
+  }
+
+  100% {
+    transform: translate(0%, 0vh);
+    height: 86vh;
+  }
+}
+
+@keyframes fadeAway {
+  0% {
+    opacity: 1;
+    scale: 1;
+    transform: rotate(0turn)
+  }
+
+  100% {
+    opacity: 0;
+    scale: .5;
+    transform: rotate(.5turn)
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: rgba(255, 255, 255, 0) 0px 0px 0px;
+  }
+  100% {
+    text-shadow: rgba(255, 255, 255, 0.7) 0px 0px 10px;
+  }
+}
+
+@keyframes dragging {
+  100% {
+    box-shadow: 5px 15px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.inputDropAnim {
+  overflow: hidden;
+  animation: 1500ms ease-in-out 0ms 1 normal forwards running inputDrop;
+}
+
+.inputDropAnim_reversed {
+  overflow: hidden;
+  animation: 1500ms ease-in-out 0ms 1 normal forwards running inputDrop_reversed;
+}
+
+.reverse {
+  animation-direction: reverse !important;
+}
+
+/*
+.videoLinkInput:focus{
+  animation: 500ms ease-in-out 300ms 1 normal forwards running simpleShake;
+}
+*/
+
+.MainMediaBox:hover {
+  overflow: auto;
+  resize: horizontal;
+}
+
+.SidePlayer:hover {
+  overflow: auto;
+  resize: horizontal;
+}
+
+
+button.closeSideBar:hover {
+  animation: 250ms ease-in-out 50ms 1 normal forwards running smoothCloseBtn;
+}
+
+.sideBarClosing {
+  overflow: hidden;
+  animation: 1700ms ease-in-out 0ms 1 normal forwards running sideBarClosing;
+}
+
+.sideBarOpening {
+  overflow: hidden;
+  animation: 1700ms ease-in-out 0ms 1 normal forwards running sideBarOpening;
+}
+
+.fadeAway {
+  animation: 700ms ease-in-out 0ms 1 normal forwards running fadeAway;
+}
+
+.peerItem:hover {
+  animation: 200ms ease-in-out 0ms 1 normal forwards running glow;
+  cursor:pointer;
+}
+
+.selectedPeer{
+  color: rgb(60, 160, 127);
+}
+
+.streamBtn:disabled{
+  opacity: .25;
+  cursor: default;
+}
+
+.hostOverlay:hover{
+  opacity: 100%;
+  transition: opacity .25s ease-in-out;
+}
