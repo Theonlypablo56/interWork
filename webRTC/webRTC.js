@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getFirestore, collection, addDoc, deleteDoc, getDocs, onSnapshot, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
-
+const firebaseConfig = "";
 const servers = {
   iceServers: [
     {
@@ -389,6 +389,12 @@ const updatePeerDevices = async (newTrack) => {
   }
 }
 
+const resetOptions = (selectElement) => {
+  if (selectElement.children){
+    
+  }
+}
+
 const connectToSession = async () => {
   if (!peerConnections){
     log("No peers in session to connect to.", 'connection');
@@ -655,7 +661,6 @@ let online = false;
 const camBtn = quickID('startCamBtn');
 const shareBtn = quickID('screenShareBtn');
 const onlineBtn = quickID('onlineBtn');
-const leaveRoomBtn = quickID('leaveRoomBtn');
 const usernameInput = quickID('usernameInput');
 const passwordInput = quickID('passwordInput');
 const roomInput = quickID('roomInput');
@@ -742,7 +747,7 @@ shareBtn.onclick = async () => {
     return;
   }
   try {
-    screenStream = await navigator.mediaDevices.getDisplayMedia(constraints);
+    screenStream = await navigator.mediaDevices.getDisplayMedia(streamConstraints);
   } catch (err){
     console.log(err);
     return;
@@ -778,31 +783,18 @@ onlineBtn.onclick = async () => {
     }
     online = false;
     onlineBtn.querySelector('h6').textContent = 'Go Online';
-    leaveRoomBtn.disabled = true;
+    peerConnections = [];
     usernameInput.disabled = false;
-    return;
+    shareBtn.disabled = true;
+  } else {
+    roomListener();
+    await user.connectionSetup();
+    onlineBtn.querySelector('h6').textContent = 'Go Offline';
+    online = true;
+    usernameInput.disabled = true;
+    shareBtn.disabled = false;
+    connectToSession();
   }
-  roomListener();
-  await user.connectionSetup();
-  onlineBtn.querySelector('h6').textContent = 'Go Offline';
-  online = true;
-  leaveRoomBtn.disabled = false;
-  usernameInput.disabled = true;
-  connectToSession();
-}
-
-leaveRoomBtn.onclick = async () => {
-  peerConnections.forEach((peer) => {
-    try {
-      peer.channel.send(JSON.stringify({type: 'disconnect', username: user.username}));
-      peer.pc.close();
-    } catch (err) {
-      console.log(err);
-    }
-  });
-  deleteSelf();
-  peerConnections = [];
-  leaveRoomBtn.disabled = true;
 }
 
 usernameInput.oninput = () => {
@@ -848,7 +840,6 @@ roomInput.onchange = () => {
     onlineBtn.disabled = false;
   }
 }
-
 
 cameraDropdown.onchange = async () => {
   if (!localStream){

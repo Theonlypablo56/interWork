@@ -66,7 +66,7 @@ h5{
   z-index: 5 !important;
 }
 
-.hostBtns{
+.hostBtns {
   position: relative;
   display: flex;
   width: 50%;
@@ -77,7 +77,7 @@ h5{
   align-items: center !important;
 }
 
-.streamBtn{
+.streamBtn {
   width: 6vw;
   aspect-ratio: 3/1;
   position: relative;
@@ -89,7 +89,7 @@ h5{
   flex-shrink: 0;
   cursor: pointer;
 }
-.buttonText{
+.buttonText {
   color: #e8eaed;
   font-size: 9px;
   display: block;
@@ -97,13 +97,14 @@ h5{
   margin: 0px 0px 0px 0px;
   z-index: 5;
 }
-#leaveRoomBtn{
+#leaveRoomBtn {
   background-color: #830000;
 }
-.settingsBtn{
+.settingsBtn {
   position: absolute;
-  width: 4vw;
   height: 2vw;
+  min-height: min-content;
+  width: 4vw;
   z-index: 4;
   background-color: #292e36;
   border: #191b20 solid 1px;
